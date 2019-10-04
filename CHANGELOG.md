@@ -8,6 +8,18 @@
 
 **Other:**
 
+# 1.2.0
+
+**API Changes:**
+- Renames `createThunksMiddleware` to `createThunkMiddleware` and adds deprecated forward for `createThunksMiddleware` (#20) - @fbernutz
+
+**Other:**
+
+- Adds `ExpectThunk` testing helper and corresponding CocoaPods subspec (#19, #37) - @jjgp, @okaverin
+- Adds SwiftPM support (#21) - @jayhickey
+- Require ReSwift 5.0 (#28) - @DivineDominion
+- Specify all officially supported Swift versions in podspec (#38) - @okaverin
+
 # 1.1.0
 
 *Released: 01/16/2019*
