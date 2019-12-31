@@ -1,0 +1,7 @@
+ReSwift-Thunk:
+  project: ReSwift-Thunk.xcodeproj
+  sdks:
+  - iphoneos
+  - iphonesimulator
+  - appletvos
+  - appletvsimulator
