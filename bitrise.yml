@@ -27,6 +27,7 @@ workflows:
               --report $REPORT \
               --prefix $PREFIX \
               --product-name "$PRODUCT_NAME" \
+              --exclude createThunkMiddleware \
               --include ../ReSwift/report.json
 
             xcconfig=$(mktemp /tmp/static.xcconfig.XXXXXX)
