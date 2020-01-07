@@ -1,4 +1,4 @@
-ReSwift-Thunk:
+ReSwift-Thunk-Package:
   project: ReSwift-Thunk.xcodeproj
   sdks:
   - iphoneos

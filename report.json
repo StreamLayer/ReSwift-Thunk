@@ -1,1 +1,1 @@
-{"identifiers":["Thunk"],"products":["ReSwiftThunk"],"prefix":"SLR_","fnReplace":[]}
+{"identifiers":["Thunk"],"products":["ReSwiftThunk"],"prefix":"SLR_","fnReplace":[{"args":[],"signature":"() -> Middleware<State> ","identifier":"createThunkMiddleware"}]}
