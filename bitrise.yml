@@ -27,20 +27,21 @@ workflows:
               --report $REPORT \
               --prefix $PREFIX \
               --product-name "$PRODUCT_NAME" \
-              --exclude createThunkMiddleware \
               --include ../ReSwift/report.json
 
             xcconfig=$(mktemp /tmp/static.xcconfig.XXXXXX)
-            trap 'rm -f "$xcconfig"; git checkout -- "$DIR"' INT TERM HUP EXIT
+            trap 'rm $xcconfig; git checkout HEAD -- "$DIR"; git clean -f' INT TERM HUP EXIT
 
+            echo 'FRAMEWORK_SEARCH_PATHS[sdk=appletv*] = $(inherited) $(PROJECT_DIR)/Carthage/Build/tvOS' >> $xcconfig
+            echo 'FRAMEWORK_SEARCH_PATHS[sdk=iphone*] = $(inherited) $(PROJECT_DIR)/Carthage/Build/iOS' >> $xcconfig
             echo "MACH_O_TYPE = staticlib" >> $xcconfig
             echo "DEBUG_INFORMATION_FORMAT = dwarf" >> $xcconfig
             echo "CLANG_ENABLE_MODULE_DEBUGGING = NO" >> $xcconfig
             echo "PRODUCT_NAME = ${PREFIX}${PRODUCT_NAME}" >> $xcconfig
             echo "PRODUCT_MODULE_NAME = ${PREFIX}${PRODUCT_NAME}" >> $xcconfig
             echo "OTHER_LDFLAGS = -framework ${PREFIX}ReSwift" >> $xcconfig
-            export XCODE_XCCONFIG_FILE="$xcconfig"
 
+            swift package generate-xcodeproj --xcconfig-overrides $xcconfig
             yarn semantic-release
 
 app:

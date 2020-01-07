@@ -5,18 +5,15 @@ import PackageDescription
 let package = Package(
     name: "ReSwift-Thunk",
     products: [
-      .library(name: "ReSwift-Thunk", targets: ["ReSwift-Thunk"])
-    ],
-    dependencies: [
-      .package(url: "https://github.com/StreamLayer/ReSwift", .upToNextMajor(from: "5.0.0-slr.403"))
+      .library(name: "SLR_ReSwiftThunk", targets: ["SLR_ReSwiftThunk"])
     ],
     targets: [
       .target(
-        name: "ReSwift-Thunk",
-        dependencies: [
-          "ReSwift"
-        ],
-        path: "ReSwift-Thunk"
+        name: "SLR_ReSwiftThunk",
+        path: "ReSwift-Thunk",
+        linkerSettings: [
+          .linkedFramework("SLR_ReSwift")
+        ]
       )
     ]
 )
